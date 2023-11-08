@@ -1,15 +1,11 @@
 //import express 
 const express = require('express')
-
 //import express-session
 const session = require('express-session')
-
 //import session-file-store
-const fileStore = require('session-file-store')(session)
-
+const fileStore = require('session-file-store')(session)//This is an IIFE.
 //create server
 const app = express()
-
 //Create session
 app.use(session({
     name: "session-tutorial",
@@ -67,10 +63,12 @@ function authUser(req, res, next){
 app.use(authUser)
 app.get('/', (req, res)=>{
     res.send("Welcome Happy people!")
-})
+});
+
 app.get('/okay', (req, res)=>{
     res.send("This too work")
-})
+});
+
 // Server setup 
 app.listen(4000, () => { 
     console.log("Server is running on port 4000") 
